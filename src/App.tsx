@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './App.css';
-import '../node_modules/materialize-css/dist/css/materialize.min.css'
 import { Routes , Route } from 'react-router-dom';
 import Navbar from './component/navbar/navbar';
 import Home from './component/home/home';
