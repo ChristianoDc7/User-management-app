@@ -1,21 +1,23 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import '../node_modules/materialize-css/dist/css/materialize.min.css'
+import { Routes , Route } from 'react-router-dom';
+import Navbar from './component/navbar/navbar';
+import Home from './component/home/home';
+import About from './component/about/about';
+import Count from './component/count/count';
 
 function App() {
-  const [count ,setCount] = useState<number>(0)
-
-  const [name , setName] = useState<string>("")
+ 
 
   return (
     <div className="App">
-      <span>{count}</span>
-      <button onClick={()=>{setCount(count+1)}}>Increment </button>
-      <p>
-        two way binding :
-        <input type="text" onChange={(event)=>{setName(event.target.value)}} value={name}/>
-        Your Name is : {name}
-      </p>
+       <Navbar/>
+        <Routes>
+          <Route path='/' element={<Home />}></Route>
+          <Route path='count' element={<Count />}></Route>
+          <Route path='about' element={<About />}></Route>
+        </Routes>
     </div>
   );
 }
