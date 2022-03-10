@@ -8,7 +8,11 @@ type Props = {
 const CardL : FunctionComponent <Props> = ({techno}) =>
 
 {
+<<<<<<< HEAD
     const {brand , description } = techno
+=======
+    const {brand , description} = techno ;
+>>>>>>> c6e8404f6fa27dda523f161cd69b3be2ee67eb67
 
   return (
     

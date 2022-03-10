@@ -1,0 +1,26 @@
+{
+    "users": 
+    [
+            {
+                "id" : 1,
+                "name" : "George Marshall",
+                "email" : "lego@gmail.com",
+                "phone" : "+2613321066558",
+                "fonction" : "student"
+            },
+            {
+                "id" : 2,
+                "name" : "Lefy Buls",
+                "email" : "kali@yahoo.com",
+                "phone" : "+26133566558",
+                "fonction" : "It-Manager"
+            },
+            {
+                "id" : 3,
+                "name" : "Larry Page",
+                "email" : "LPPPr@outlook.fr",
+                "phone" : "+2613596562",
+                "fonction" : "Marketing-manager"
+            }
+    ]
+}
