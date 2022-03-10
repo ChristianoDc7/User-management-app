@@ -5,6 +5,8 @@ import Navbar from './component/navbar/navbar';
 import Home from './component/home/home';
 import About from './component/about/about';
 import Count from './component/count/count';
+import Posts from './component/posts/posts';
+import Users from './component/users/users';
 
 function App() {
  
@@ -12,11 +14,15 @@ function App() {
   return (
     <div className="App">
        <Navbar/>
-        <Routes>
-          <Route path='/' element={<Home />}></Route>
-          <Route path='count' element={<Count />}></Route>
-          <Route path='about' element={<About />}></Route>
-        </Routes>
+       <div className='routes'>
+          <Routes >
+            <Route path='/' element={<Home />}></Route>
+            <Route path='count' element={<Count />}></Route>
+            <Route path='posts' element={<Posts />}></Route>
+            <Route path='users' element={<Users />}></Route>
+            <Route path='about' element={<About />}></Route>
+          </Routes>
+        </div>
     </div>
   );
 }
