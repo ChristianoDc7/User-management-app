@@ -5,8 +5,6 @@ import CardL from "./card/card";
 
 export default function Home()
 {
-    const [list , setList] = useState<Array<string>>(['Get Started','Close'])
-
     
     const [ techno , setTechno ] = useState<Language[]>([])
 
@@ -19,8 +17,8 @@ export default function Home()
             Home sweet home
             <div className="row">
                 {
-                    techno.map((element,index) => (
-                        <CardL key={index} techno = {element} />
+                    techno.map((element) => (
+                        <CardL key={element.id} techno = {element} />
                     ))
                 }
             </div>

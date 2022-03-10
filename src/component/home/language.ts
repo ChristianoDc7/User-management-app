@@ -1,9 +1,10 @@
 interface Language 
 {
-    brand? : String ,
-    description? : String ,
+    id? : number,
+    brand? : string ,
+    description? : string ,
     release_date? : Date ,
-    logo? : String
+    logo? : string
 }
 
 export default Language;
