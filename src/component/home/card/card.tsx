@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import Language from '../language'
 
+
 type Props = {
     techno : Language
 }

@@ -7,12 +7,12 @@ const Posts : FunctionComponent = () =>
     const [Posts, setPosts] = useState<PostInterface[]>([])
 
     useEffect(()=>{
-        fetch('https://jsonplaceholder.typicode.com/posts')
+        /* fetch('http://localhost:4000/users')
         .then(response => response.json())
         .then( (datas) => {
             setPosts(datas)
         })
-
+ */
     },[])
 
     return (
