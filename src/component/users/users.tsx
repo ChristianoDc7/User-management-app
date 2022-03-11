@@ -9,10 +9,6 @@ const Users : FunctionComponent = () =>
 {
     const [Users , setUsers] = useState<UserInterface[]>([])
 
-    const [newUser , setNewUser] = useState<UserInterface[]>([
-      
-    ])
-
     useEffect(()=>{
         AppServices.getUsers().then( datas => setUsers(datas) )
     },[])
