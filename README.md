@@ -1,7 +1,7 @@
 # Getting Started with my first React Project 
 This Project consist to Manage Users : Create , Read , Update , Delete 
 
-Designed with Materialize CSS 
+Designed with Materialize CSS and 
 Restfull API with Json Server for Back End 
 
 ## Available Scripts
