@@ -1,28 +1,48 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent, useRef, useState} from "react";
 import { UserInterface} from '../usersInterface';
-import AppSercices from '../../../services/app.services'
+import AppServices from '../../../services/app.services'
 
-type form = {
-    form : UserInterface
+
+type FuncProps = {
+    fetchUsers() : void ;
 }
 
-const AddUsers : FunctionComponent = () =>
+const AddUsers : FunctionComponent<FuncProps> = ({fetchUsers}) =>
 {
+
+    const [newUser , setNewUser] = useState<UserInterface>({
+        name : '',
+        email : '',
+        phone : '',
+        fonction : ''
+    })
     
-    const [newUser , setNewUser] = useState<UserInterface[]>([])
     
-    const handleSubmit = (e: { preventDefault: () => void; }) => {
+    const [btnStatus , setBtnStatus] = useState<boolean>(true)
+    
+    
+    const handleSubmit = async (e: { preventDefault: () => void; }) => 
+    {
         e.preventDefault();
-        AppSercices.addPosts(newUser)
+        if(newUser.name != "" && newUser.email != "" && newUser.phone != "" && newUser.fonction != "" )
+        {
+             await AppServices.addUsers(newUser) && fetchUsers()
+        }
         
+        setNewUser({...newUser, ...{ name : '' , email : '' , phone : '' , fonction : '' }})
     }
 
     const handleInputChange = (e : React.ChangeEvent<HTMLInputElement>) =>
     {
-        const fieldName : string = e.target.name
+        if(newUser.name != "" && newUser.email != "" && newUser.phone != "" && newUser.fonction != "" ){
+            setBtnStatus(false)
+        }else{
+            setBtnStatus(true)
+        }
+        const fieldId : string = e.target.id
         const fieldValue : string = e.target.value
-        const newField : UserInterface = {
-            [fieldName]: fieldValue 
+        const newField : object = {
+            [fieldId]: fieldValue 
         };
         setNewUser({ ...newUser, ...newField})
     }
@@ -30,23 +50,23 @@ const AddUsers : FunctionComponent = () =>
         <form className="row" onSubmit={handleSubmit}>
            
                 <div className="input-field col s3">
-                    <input id="name" type="text" name="name" className="validate" onChange={e => handleInputChange(e)}/>
+                    <input id="name" type="text" className="validate" onChange={e => handleInputChange(e)} value={newUser.name}/>
                     <label htmlFor="name">Name</label>
                 </div>
                 <div className="input-field col s3">
-                    <input id="email" name="email" type="email" className="validate" onChange={e => handleInputChange(e)}/>
+                    <input id="email" type="email" className="validate" onChange={e => handleInputChange(e)}  value={newUser.email}/>
                     <label htmlFor="email">Email</label>
                 </div>
                 <div className="input-field col s2">
-                    <input id="phone" name="phone" type="text" className="validate" onChange={e => handleInputChange(e)}/>
+                    <input id="phone" type="text" className="validate" onChange={e => handleInputChange(e)} value={newUser.phone} />
                     <label htmlFor="phone">Phone</label>
                 </div>
                 <div className="input-field col s3">
-                    <input id="fonction" name="fonction" type="text" className="validate" onChange={e => handleInputChange(e)} />
+                    <input id="fonction" type="text" className="validate" onChange={e => handleInputChange(e)} value={newUser.fonction} />
                     <label htmlFor="fonction">Fonction</label>
                 </div>
                 <div className="col s1">
-                    <button className="btn-floating btn-large waves-effect waves-light red" type="submit" ><i className="material-icons">add</i></button>
+                    <button className="btn-floating btn-large waves-effect waves-light green" type="submit" disabled={btnStatus}><i className="material-icons">add</i></button>
                 </div>
         </form>
     )

@@ -3,19 +3,27 @@ import User from "./user/user";
 import { UserInterface } from "./usersInterface";
 import AppServices from "../../services/app.services";
 import AddUsers from "./user/add-users";
+import Search from "./user/search-user";
 
 
 const Users : FunctionComponent = () =>
 {
     const [Users , setUsers] = useState<UserInterface[]>([])
 
-    useEffect(()=>{
+    
+
+    const fetchUsers = () : void => {
         AppServices.getUsers().then( datas => setUsers(datas) )
+    }
+
+    useEffect(()=>{
+        fetchUsers();
     },[])
 
     return (
         <div className="row">
-            <AddUsers />
+            <AddUsers fetchUsers = {fetchUsers} />
+            <Search setUsers={setUsers} />
             <table className="centered highlight">
                 <thead>
                     <tr>
@@ -24,16 +32,17 @@ const Users : FunctionComponent = () =>
                         <th>Email</th>
                         <th>Phone</th>
                         <th>Fonction</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
                         Users.map((user)=>(
-                            <User key={user.id} Users={user}/>
+                            <User key={user.id} Users={user} fetchUsers = {fetchUsers} isEdit={false} />
                         ))
                     }
                 </tbody>
-      </table>
+            </table>
         </div>
     )
 }

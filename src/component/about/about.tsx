@@ -6,7 +6,7 @@ function About() {
   return (
     <div className="card-panel" > 
         <i className="material-icons">add</i>
-        <p>About Component</p>
+        <p>Designed and developed by Christiano</p>
     </div>
   );
 }

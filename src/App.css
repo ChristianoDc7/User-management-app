@@ -21,3 +21,13 @@
 .routes{
   margin: 20px;
 }
+
+.margin{
+  margin-right: 4px;
+}
+
+.retrecir{
+  max-width: 21vh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
