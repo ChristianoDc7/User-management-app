@@ -2,7 +2,7 @@
 
 ## Available Scripts
 
-If you wanna clone this and test , you must run ## `npm install`
+If you wanna clone this and test , you must run ### `npm install`
 It will install all dependencies that this projects needs
 
 In the project directory, you can run:
