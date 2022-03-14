@@ -1,5 +1,5 @@
+import { OgtInterface } from "../component/ogt/ogtInterface";
 import { UserInterface } from "../component/users/usersInterface";
-import { PostInterface } from "../component/posts/post";
 
 export default class AppServices 
 {
@@ -13,12 +13,6 @@ export default class AppServices
         .catch((error)=>console.log(error))
     }
 
-    static async getPosts() : Promise<PostInterface[]>
-    {
-        return await fetch('https://jsonplaceholder.typicode.com/posts')
-        .then(response => response.json())
-        .catch((error)=>console.log(error))
-    }
     
     static async addUsers(newUser : UserInterface)
     {
@@ -51,6 +45,13 @@ export default class AppServices
         .then(response => response.json())
         .catch((error)=>console.log(error))
         
+    }
+
+    static async getRub() : Promise<OgtInterface[]>
+    {
+        return fetch('http://localhost:8000/ogts')
+        .then(response => response.json())
+        .catch((error)=>console.log(error))
     }
 
     static  DESC(a : any , b : any)

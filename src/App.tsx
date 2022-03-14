@@ -5,8 +5,8 @@ import Navbar from './component/navbar/navbar';
 import Home from './component/home/home';
 import About from './component/about/about';
 import Count from './component/count/count';
-import Posts from './component/posts/posts';
 import Users from './component/users/users';
+import OgtTable from './component/ogt/ogt-table';
 
 function App() {
  
@@ -18,7 +18,7 @@ function App() {
           <Routes >
             <Route path='/' element={<Home />}></Route>
             <Route path='count' element={<Count />}></Route>
-            <Route path='posts' element={<Posts />}></Route>
+            <Route path='ogt' element={<OgtTable/>}></Route>
             <Route path='users' element={<Users />}></Route>
             <Route path='about' element={<About />}></Route>
           </Routes>
