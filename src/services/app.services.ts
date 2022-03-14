@@ -49,7 +49,7 @@ export default class AppServices
 
     static async getRub() : Promise<OgtInterface[]>
     {
-        return fetch('http://localhost:8000/ogts')
+        return await fetch('http://localhost:8000/ogts')
         .then(response => response.json())
         .catch((error)=>console.log(error))
     }

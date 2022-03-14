@@ -12,10 +12,36 @@ const OgtTable : FunctionComponent = () => {
     useEffect(()=>{
         AppServices.getRub()
         .then( data => setOgtData(data))
-        
+        if(ogtData.length > 0 ){
+            setHead(ogtData.map(element => element.year))
+        }
     },[])
 
-    const [head ,setHead] = useState<Array<number>>([])
+    const [head , setHead] = useState<Array<number>>([
+        
+    ])
+
+    let [checked , setChecked] = useState<Array<number>>([2022,2023,2024])
+
+    const handleCheck = (element : number, e : React.ChangeEvent<HTMLInputElement>) =>
+    {
+        let checktest = e.target.checked 
+        let checkedId = Number(e.target.id) 
+        let newField : number[]
+        if(checktest){
+            const newElement : number[] = checked.concat([element]);
+            newField = newElement;
+        } else {
+            const newElement: number[] = checked.filter(el => el != checkedId)
+            newField = newElement;
+        }
+        setChecked(newField.sort((a,b) => a-b))
+        
+    }
+
+    const hasType = (type: number): boolean => {
+        return checked.includes(type);
+      }
 
     const [rows , setRows] = useState<Array<string>>([
         'SVT' , 'PC' , 'MATH'
@@ -25,35 +51,35 @@ const OgtTable : FunctionComponent = () => {
     <div>
         <h2>Ogt Table</h2>
         <p>
-            <form action="#">
+        <button className="btn-floating waves-effect waves-light green margin-bottom" onClick={()=>{setHead(ogtData.map(element => element.year))}}><i className="material-icons">edit</i></button>
+            <div className='row'>
             {
                 head.map((element,index)=>(
-                    <label key={index} className="margin">
-                        <input type="checkbox" id={element.toString()} className="filled-in" /> 
+                    <label key={index} className="margin col s2">
+                        <input type="checkbox" id={element.toString()} className="filled-in" defaultChecked={hasType(element)} onChange={(e)=>handleCheck(element, e)}/> 
                         <span>{element}</span>
                     </label>
                 ))
             }
-            </form> 
+            </div> 
         </p>
         <table className='striped'>
             <thead>
                 <th></th>
                 {
-                    head.map((element,index)=>(
-                        <TableHeader key={index} head = {element} />
+                    checked.map((element,index)=>(
+                        <TableHeader key={index} checked = {element} />
                     ))
                 }
             </thead>
             <tbody>
                 {
                     rows.map((element,index)=>(
-                        <TableRow key={index} row = {element} ogtData = {ogtData} />
+                        <TableRow key={index} row = {element} checked= {checked} ogtData={ogtData}/>
                     ))
                 }
             </tbody>
         </table>
-        <button onClick={()=>{setHead(ogtData.map(element => element.year))}}>Fetch</button>
     </div>
   )
 }
@@ -61,19 +87,32 @@ const OgtTable : FunctionComponent = () => {
 
 //composant header
 type headsProp = {
-    head : number
+    checked : number
 }
-const TableHeader : FunctionComponent<headsProp> = ({head}) => <th>{head}</th> 
+const TableHeader : FunctionComponent<headsProp> = ({checked}) => <th>{checked}</th> 
 
 
 //composant ligne
 type rowsProp = {
     row : string,
-    ogtData : OgtInterface[]
+    checked : Array<number>,
+    ogtData : Array<OgtInterface>
 }
-const TableRow : FunctionComponent<rowsProp> = ({row , ogtData}) => {
+const TableRow : FunctionComponent<rowsProp> = ({row , checked , ogtData }) => 
+{
 
-    const [value,setValue] = useState<Array<number>>(ogtData.map(element => element.SVT))
+    const setter = () =>
+    {   let arr : Array<number> = []
+        for(let u of checked){
+            let matiere : Array<any> = ogtData.filter(el => el.year === u)
+            let note : number = matiere.map(function(el){return el[row]})[0]
+            arr.push(note)
+        }
+        return arr ;
+    }
+
+   const value = setter()
+
     return (
         <tr>
             <th>{row}</th>
