@@ -50,7 +50,6 @@ const OgtTable : FunctionComponent = () => {
   return (
     <div>
         <h2>Ogt Table</h2>
-        <p>
         <button className="btn-floating waves-effect waves-light green margin-bottom" onClick={()=>{setHead(ogtData.map(element => element.year))}}><i className="material-icons">edit</i></button>
             <div className='row'>
             {
@@ -62,15 +61,16 @@ const OgtTable : FunctionComponent = () => {
                 ))
             }
             </div> 
-        </p>
         <table className='striped'>
             <thead>
-                <th></th>
-                {
-                    checked.map((element,index)=>(
-                        <TableHeader key={index} checked = {element} />
-                    ))
-                }
+                <tr>
+                    <th></th>
+                    {
+                        checked.map((element,index)=>(
+                            <TableHeader key={index} checked = {element} />
+                        ))
+                    }
+                </tr>
             </thead>
             <tbody>
                 {
