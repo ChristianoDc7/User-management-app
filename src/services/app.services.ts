@@ -3,7 +3,7 @@ import { UserInterface } from "../component/users/usersInterface";
 
 export default class AppServices 
 {
-    static baseUrl : string = 'http://localhost:8000/users/';
+    static baseUrl : string = 'http://localhost:9000/users/';
 
     static async  getUsers() : Promise<UserInterface[]> 
     {
@@ -21,7 +21,7 @@ export default class AppServices
             headers : {'Content-type' : 'application/json'},
             body : JSON.stringify(newUser)
         }
-        return fetch(this.baseUrl , options )
+        return await fetch(this.baseUrl , options )
         .then(response => response.json())
         .catch((error)=>console.log(error))
         
