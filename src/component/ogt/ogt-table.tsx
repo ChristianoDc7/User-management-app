@@ -12,9 +12,6 @@ const OgtTable : FunctionComponent = () => {
     useEffect(()=>{
         AppServices.getRub()
         .then( data => setOgtData(data))
-        if(ogtData.length > 0 ){
-            setHead(ogtData.map(element => element.year))
-        }
     },[])
 
     const [head , setHead] = useState<Array<number>>([
