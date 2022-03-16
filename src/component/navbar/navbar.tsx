@@ -17,7 +17,6 @@ export default function Navs() {
           </Navbar>
       </Row>
             <ul className="sidenav darken-2" id="mobile-demo">
-                
                 <li><Link to="/"><i className="material-icons-round tiny" >home</i>Home</Link></li>
                 <li><Link to="count"><i className='material-icons-outlined tiny'>add_circle</i>Count</Link></li>
                 <li><Link to="ogt"><i className="material-icons-outlined tiny" >assessment</i>OGT</Link></li>

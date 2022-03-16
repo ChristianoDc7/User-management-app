@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import { Table } from 'react-materialize'
+import { Row, Select, Table ,Col } from 'react-materialize'
 import AppServices from '../../services/app.services'
 import { OgtInterface } from './ogtInterface'
 
@@ -18,6 +18,16 @@ const OgtTable : FunctionComponent = () => {
     const [head , setHead] = useState<Array<number>>([
         
     ])
+
+
+    const [selected , setSelected] = useState<Array<number>>([])
+
+    const handleSelect = (e : React.ChangeEvent<HTMLSelectElement> ) =>
+    {
+        e.stopPropagation();
+        let selectedYear = Array.from(e.target.selectedOptions, option => option.value).map(Number)
+        setChecked(selectedYear)
+    }
 
     let [checked , setChecked] = useState<Array<number>>([2022,2023,2024])
 
@@ -48,17 +58,19 @@ const OgtTable : FunctionComponent = () => {
   return (
     <div>
         <h2>Ogt Table</h2>
+        <Row>
+            <Col >
+                    <Select multiple  onChange={(e)=>handleSelect(e)} >
+                            <option value="" disabled >Choose the column</option>
+                            {
+                                head.map((el,i)=>(
+                                    <option key={i} value={el}>{el}</option>
+                                ))
+                            }
+                    </Select>
+            </Col>
+        </Row>
         <button className="btn-floating waves-effect waves-light green margin-bottom" onClick={()=>{setHead(ogtData.map(element => element.year))}}><i className="material-icons">edit</i></button>
-            <div className='row'>
-            {
-                head.map((element,index)=>(
-                    <label key={index} className="margin col s2">
-                        <input type="checkbox" id={element.toString()} className="filled-in" defaultChecked={hasType(element)} onChange={(e)=>handleCheck(element, e)}/> 
-                        <span>{element}</span>
-                    </label>
-                ))
-            }
-            </div> 
         <Table striped={true}>
             <thead>
                 <tr>
