@@ -11,8 +11,7 @@ function Count() {
 
   return (
     <div >
-      <span>{count}</span>
-      <button onClick={()=>{setCount(count+1)}}>Increment </button>
+      <button onClick={()=>{setCount(count+1)}}>you clicked {count} times</button>
       <p>
         two way binding :
         <input type="text" onChange={(event)=>{setName(event.target.value)}} value={name}/>

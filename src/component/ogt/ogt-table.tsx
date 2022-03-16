@@ -1,8 +1,7 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import { Row, Select, Table ,Col } from 'react-materialize'
 import AppServices from '../../services/app.services'
 import { OgtInterface } from './ogtInterface'
-
 
 
 
@@ -10,21 +9,30 @@ const OgtTable : FunctionComponent = () => {
 
     const [ogtData , setOgtData] = useState<OgtInterface[]>([])
 
+    const sendto = async ()=>
+    {
+        let headers = ogtData.map((element: { year: any }) => element.year)
+        setHead(headers)
+    }
+
+    const fetchOgt = async () => 
+    {
+        const data = await AppServices.getRub()
+        return setOgtData(data)
+
+    }
+    const [head , setHead] = useState<Array<number>>([])
+    
+    
+
     useEffect(()=>{
-        AppServices.getRub()
-        .then( data => setOgtData(data))
+        if(ogtData.length == 0){
+            fetchOgt()
+        }
     },[])
-
-    const [head , setHead] = useState<Array<number>>([
-        
-    ])
-
-
-    const [selected , setSelected] = useState<Array<number>>([])
 
     const handleSelect = (e : React.ChangeEvent<HTMLSelectElement> ) =>
     {
-        e.stopPropagation();
         let selectedYear = Array.from(e.target.selectedOptions, option => option.value).map(Number)
         setChecked(selectedYear)
     }
@@ -47,9 +55,9 @@ const OgtTable : FunctionComponent = () => {
         
     }
 
-    const hasType = (type: number): boolean => {
-        return checked.includes(type);
-      }
+    const hasSelected = (sel : number): boolean =>{
+        return checked.includes(sel)
+    }
 
     const [rows , setRows] = useState<Array<string>>([
         'SVT' , 'PC' , 'MATH'
@@ -64,7 +72,7 @@ const OgtTable : FunctionComponent = () => {
                             <option value="" disabled >Choose the column</option>
                             {
                                 head.map((el,i)=>(
-                                    <option key={i} value={el}>{el}</option>
+                                    <option key={i} value={el} selected={hasSelected(el)} >{el}</option>
                                 ))
                             }
                     </Select>
@@ -138,3 +146,5 @@ const TableRow : FunctionComponent<rowsProp> = ({row , checked , ogtData }) =>
 
 
 export default OgtTable;
+
+
