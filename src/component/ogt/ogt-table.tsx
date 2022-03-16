@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
+import { Table } from 'react-materialize'
 import AppServices from '../../services/app.services'
 import { OgtInterface } from './ogtInterface'
 
@@ -58,7 +59,7 @@ const OgtTable : FunctionComponent = () => {
                 ))
             }
             </div> 
-        <table className='striped'>
+        <Table striped={true}>
             <thead>
                 <tr>
                     <th></th>
@@ -76,7 +77,7 @@ const OgtTable : FunctionComponent = () => {
                     ))
                 }
             </tbody>
-        </table>
+        </Table>
     </div>
   )
 }

@@ -7,15 +7,16 @@ import About from './component/about/about';
 import Count from './component/count/count';
 import Users from './component/users/users';
 import OgtTable from './component/ogt/ogt-table';
+import Navs from './component/navbar/navbar';
 
 function App() {
  
 
   return (
     <div className="App">
-       <Navbar/>
+       <Navs/>
        <div className='routes'>
-          <Routes >
+          <Routes>
             <Route path='/' element={<Home />}></Route>
             <Route path='count' element={<Count />}></Route>
             <Route path='ogt' element={<OgtTable/>}></Route>
