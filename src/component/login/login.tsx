@@ -18,7 +18,7 @@ const Login : FunctionComponent = () =>
                     </Col>
                </Row>
                <Row>
-                    <Button className="float-right" small node="a" tooltip="Connect" waves="light" >Connect <Icon right>login</Icon></Button>
+                    <Button className="floatright" small node="a" tooltip="Connect" waves="light" >Connect <Icon right>login</Icon></Button>
                </Row>
             </Card>
         </Col>
