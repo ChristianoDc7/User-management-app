@@ -26,10 +26,14 @@ const OgtTable : FunctionComponent = () => {
     
 
     useEffect(()=>{
-        if(ogtData.length == 0){
+        
             fetchOgt()
-        }
+        
     },[])
+
+    useEffect(()=>{
+        setHead(ogtData.map(element => element.year))
+    },[ogtData])
 
     const handleSelect = (e : React.ChangeEvent<HTMLSelectElement> ) =>
     {
@@ -68,8 +72,8 @@ const OgtTable : FunctionComponent = () => {
         <h2>Ogt Table</h2>
         <Row>
             <Col >
-                    <Select multiple  onChange={(e)=>handleSelect(e)} >
-                            <option value="" disabled >Choose the column</option>
+                    <Select multiple onChange={(e)=>handleSelect(e)} >
+                            <option value="" disabled >Choose the columns</option>
                             {
                                 head.map((el,i)=>(
                                     <option key={i} value={el} selected={hasSelected(el)} >{el}</option>
@@ -77,6 +81,7 @@ const OgtTable : FunctionComponent = () => {
                             }
                     </Select>
             </Col>
+            
         </Row>
         <button className="btn-floating waves-effect waves-light green margin-bottom" onClick={()=>{setHead(ogtData.map(element => element.year))}}><i className="material-icons">edit</i></button>
         <Table striped={true}>

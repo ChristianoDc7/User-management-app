@@ -14,7 +14,8 @@ export default function Navs() {
               <NavLink to="ogt"><i className="material-icons-outlined tiny" >assessment</i>OGT</NavLink>
               <NavLink to="users"><i className="material-icons-outlined tiny" >account_circle</i>Users</NavLink>
               <NavLink to="about"><i className="material-icons-outlined tiny" >info</i>About</NavLink>
-          </Navbar>
+              <NavLink to="register"><i className="material-icons-outlined tiny" >login</i>Register</NavLink>
+          </Navbar> 
       </Row>
             <ul className="sidenav darken-2" id="mobile-demo">
                 <li><Link to="/"><i className="material-icons-round tiny" >home</i>Home</Link></li>
