@@ -1,17 +1,26 @@
 import React, { FunctionComponent, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { Card, Col, Icon, Row} from 'react-materialize'
 import './login.css'
-const Login : FunctionComponent = () =>
+
+type loginProp = {
+     user : any,
+     setUser(user : React.SetStateAction<any>) : void
+}
+const Login : FunctionComponent<loginProp> = ({user, setUser}) =>
 {
      const [inputForms , setInputForm] = useState<any>({
           userName : '',
           password : ''
      })
 
-     const handleSubmit = (e: { preventDefault: () => void }) =>
+     const navigate = useNavigate()
+
+     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) =>
      {
           e.preventDefault();
-          
+          setUser({...user,...inputForms})
+          navigate('/')
      }
 
      const handleInputChange = (e : React.ChangeEvent<HTMLInputElement>) => 

@@ -4,13 +4,12 @@ import { UserInterface } from "./usersInterface";
 import AppServices from "../../services/app.services";
 import AddUsers from "./user/add-users";
 import Search from "./user/search-user";
+import { Navigate } from "react-router-dom";
 
 
 const Users : FunctionComponent = () =>
 {
     const [Users , setUsers] = useState<UserInterface[]>([])
-
-    
 
     const fetchUsers = () : void => {
         AppServices.getUsers().then( datas => setUsers(datas) )
