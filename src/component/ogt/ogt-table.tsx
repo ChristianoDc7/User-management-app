@@ -17,18 +17,14 @@ const OgtTable : FunctionComponent = () => {
 
     const fetchOgt = async () => 
     {
-        const data = await AppServices.getRub()
-        return setOgtData(data)
-
+       let datas =  await AppServices.getRub()  
+       return setOgtData(datas.data);
     }
     const [head , setHead] = useState<Array<number>>([])
     
-    
 
     useEffect(()=>{
-        
             fetchOgt()
-        
     },[])
 
     useEffect(()=>{

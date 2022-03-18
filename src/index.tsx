@@ -7,11 +7,12 @@ import '../node_modules/materialize-css/dist/js/materialize.min.js'
 import '../node_modules/material-icons/iconfont/material-icons.css'
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
+import AuthProvider from './services/Auth/Auth-Provider'
 
 ReactDOM.render(
   <React.StrictMode>
       <BrowserRouter>
-        <App />
+             <App />
       </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

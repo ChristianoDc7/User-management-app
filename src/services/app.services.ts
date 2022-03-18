@@ -1,5 +1,8 @@
+import axiosConfig from "./axios-config";
 import { OgtInterface } from "../component/ogt/ogtInterface";
 import { UserInterface } from "../component/users/usersInterface";
+import { AxiosResponse } from "axios";
+
 
 export default class AppServices 
 {
@@ -47,11 +50,10 @@ export default class AppServices
         
     }
 
-    static async getRub() : Promise<OgtInterface[]>
+    static async getRub() : Promise<AxiosResponse<OgtInterface[], any>>
     {
-        let response = await fetch('http://localhost:8000/ogts')
-        
-        return response.json()
+        let response = await axiosConfig.get<OgtInterface[]>('http://localhost:8000/ogts/')
+        return response;
     }
 
     static  DESC(a : any , b : any)
