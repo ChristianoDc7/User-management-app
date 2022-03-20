@@ -1,26 +1,31 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { Card, Col, Icon, Row} from 'react-materialize'
 import './login.css'
+import { AuthContext } from '../../services/Auth/Auth-Provider';
 
-type loginProp = {
-     user : any,
-     setUser(user : React.SetStateAction<any>) : void
-}
-const Login : FunctionComponent<loginProp> = ({user, setUser}) =>
+
+const Login : FunctionComponent = () =>
 {
+     const {user, setUser} = useContext(AuthContext)
      const [inputForms , setInputForm] = useState<any>({
           userName : '',
           password : ''
      })
+
+     const [errmsg , setErrMsg] = useState<string>('')
 
      const navigate = useNavigate()
 
      const handleSubmit = (e: React.FormEvent<HTMLFormElement>) =>
      {
           e.preventDefault();
+          if(inputForms.userName == 'tino' && inputForms.password == 'tino'){
           setUser({...user,...inputForms})
           navigate('/')
+          } else {
+               setErrMsg('Wrong Password or userName , please retry ')
+          }
      }
 
      const handleInputChange = (e : React.ChangeEvent<HTMLInputElement>) => 
@@ -34,7 +39,20 @@ const Login : FunctionComponent<loginProp> = ({user, setUser}) =>
      }
 
   return (
-    <Row className='container'>
+    <>
+         {
+              errmsg != '' ? (
+          <Row className='container'>
+              <Col m={6} s={12}>
+                    <div className='card-panel red lighten-1 text-white'>
+                         <span>
+                              {errmsg}
+                         </span>
+                    </div>
+              </Col>
+          </Row>) : ('')
+         }
+     <Row className='container'>
         <Col m={6} s={12}>
            <form onSubmit={handleSubmit}>
                <Card className="#e0f7fa cyan lighten-5">
@@ -59,6 +77,7 @@ const Login : FunctionComponent<loginProp> = ({user, setUser}) =>
             </form>
         </Col>
     </Row>
+    </>
   )
 }
 

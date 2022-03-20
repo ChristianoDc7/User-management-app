@@ -1,23 +1,52 @@
-import { createContext, Dispatch, FunctionComponent, SetStateAction, useState } from "react";
+import { createContext, FunctionComponent, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { userType , AuthContextType } from "./context-type";
 
-type ProviderPorps = {
-   
+ 
+export const AuthContext = createContext<AuthContextType>({
+  isAuthenticated : true ,
+  setIsAuthenticated : (e)=>e = e ,
+  setUser : (e)=> e = e ,
+  Logout : ()=>{},
+  user : {
+    userName : '' , 
+    password : ''
+  }
+});
+
+const AuthProvider : FunctionComponent = ({ children }) => {
+    const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
     
-}
-export const AuthContext = createContext<ProviderPorps | null >(null);
+    const [user , setUser ] = useState<userType>({
+        userName :'',
+        password :''
+      })
+    
+    const {userName , password } = user;
 
-type Authprops = {
-    children : any
-}
+    const navigate = useNavigate()
+    
+    const Logout = () => {
+        setUser({
+          userName : '', 
+          password : ''
+        }) 
+        navigate('/')
+      }
 
-export const AuthProvider : FunctionComponent<Authprops> = ({ children }) => {
-    const [auth, setAuth] = useState<boolean>(false);
+    useEffect(()=>{
+        if(userName == 'tino' && password == 'tino'){
+          setIsAuthenticated(true)
+        }else {
+          setIsAuthenticated(false)
+        }
+      },[user])
 
     return (
-        <AuthContext.Provider value={{ auth, setAuth }}>
+        <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated , user , setUser , Logout}}>
             {children}
         </AuthContext.Provider>
     )
 }
 
-export default AuthContext;
+export default AuthProvider;

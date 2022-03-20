@@ -1,13 +1,14 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { Navbar, Row  } from 'react-materialize'
+import './navbar.css'
 
 export default function Navs() {
  
   return (
     <div>
       <Row className=''>
-          <Navbar className="navbar-container grey darken-2" alignLinks={'right'} menuIcon={undefined} >  
+          <Navbar className="navbar-container grey darken-2 align-center" alignLinks={'right'} menuIcon={undefined} >  
               <NavLink to="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></NavLink>
               <NavLink to="/"><i className="material-icons-round tiny" >home</i>Home</NavLink>
               <NavLink to="count"><i className='material-icons-outlined tiny'>add_circle</i>Count</NavLink>
