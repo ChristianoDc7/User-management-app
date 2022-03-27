@@ -21,13 +21,9 @@ function App() {
   return (
         <div className="App">
             <Navs/>
-            {
-              isAuthenticated ? (<button onClick={Logout}>Logout</button>) 
-              : ('')
-            }
             <div className='routes'>
                 <Routes>
-                  <Route path='/' element={<Home isAuth={isAuthenticated}/>} />
+                  <Route path='/' element={<Home />} />
                   //Route Protégé
                   <Route element={<ProtectedRoute isAllowed={isAuthenticated} />}>
                       <Route path='count' element={<Count/>} />

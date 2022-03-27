@@ -6,3 +6,28 @@
 .text-white{
     color: bisque;
 }
+
+.centered{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+     
+}
+
+.min{
+    min-width: 55vh
+}
+
+.icon-password{
+    float: right;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    z-index: 2;
+    opacity: 0.5;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+

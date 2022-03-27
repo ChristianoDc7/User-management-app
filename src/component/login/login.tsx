@@ -13,6 +13,8 @@ const Login : FunctionComponent = () =>
           password : ''
      })
 
+     const [vis , setVis] = useState<boolean>(false)
+
      const [errmsg , setErrMsg] = useState<string>('')
 
      const navigate = useNavigate()
@@ -39,12 +41,12 @@ const Login : FunctionComponent = () =>
      }
 
   return (
-    <>
+    <div className='center-align centered'>
          {
               errmsg != '' ? (
-          <Row className='container'>
-              <Col m={6} s={12}>
-                    <div className='card-panel red lighten-1 text-white'>
+          <Row >
+              <Col m={4} s={10}>
+                    <div className='card-panel red lighten-1 text-white min'>
                          <span>
                               {errmsg}
                          </span>
@@ -52,22 +54,23 @@ const Login : FunctionComponent = () =>
               </Col>
           </Row>) : ('')
          }
-     <Row className='container'>
-        <Col m={6} s={12}>
+     <Row >
+        <Col m={4} s={12}>
            <form onSubmit={handleSubmit}>
-               <Card className="#e0f7fa cyan lighten-5">
+               <Card className="#e0f7fa blue lighten-5 min">
                     <Row>
                          <div className="input-field col s12">
                               <i className="material-icons prefix">account_circle</i>
                               <input id="userName" type="text" className="validate" required value={inputForms.userName} onChange={(e)=>handleInputChange(e)}/>
-                              <label htmlFor="userName">UserName</label>
+                              <label htmlFor="userName" >UserName</label>
                          </div>
                     </Row>
                     <Row>
                          <div className="input-field col s12">
                               <i className="material-icons prefix">vpn_key</i>
-                              <input id="password" type="password" className="validate" required value={inputForms.password} onChange={(e)=>handleInputChange(e)}/>
+                              <input id="password" type={ !vis ? 'password' : 'text'} className="validate" required value={inputForms.password} onChange={(e)=>handleInputChange(e)}/>
                               <label htmlFor="password">Password</label>
+                              <span className='icon-password' onClick={()=>setVis(!vis)}><i className='material-icons'>{vis ? 'visibility' : 'visibility_off' }</i></span>
                          </div>
                     </Row>
                     <Row>
@@ -77,7 +80,7 @@ const Login : FunctionComponent = () =>
             </form>
         </Col>
     </Row>
-    </>
+    </div>
   )
 }
 

@@ -66,7 +66,7 @@ const AddUsers : FunctionComponent<FuncProps> = ({fetchUsers}) =>
                     <label htmlFor="fonction">Fonction</label>
                 </div>
                 <div className="col s1">
-                    <button className="btn-floating btn-large waves-effect waves-light green" type="submit" disabled={btnStatus}><i className="material-icons">add</i></button>
+                    <button className="btn-floating btn-large waves-effect waves-light green" type="submit" disabled={btnStatus}><i className="material-icons">person_add</i></button>
                 </div>
         </form>
     )

@@ -4,10 +4,8 @@ import techs from "../../data/data";
 import CardL from "./card/card";
 import { useNavigate } from "react-router-dom";
 
-type homeProp = {
-    isAuth : boolean
-}
-const Home : FunctionComponent<homeProp> = ({isAuth}) =>
+
+const Home : FunctionComponent= () =>
 {
     
     const [ techno , setTechno ] = useState<Language[]>([])
@@ -20,8 +18,6 @@ const Home : FunctionComponent<homeProp> = ({isAuth}) =>
 
     return (
         <div >
-
-           { !isAuth && <button onClick={()=>navigate('/login')}>Login</button> }
             <div className="row">
                 {
                     techno.map((element) => (
