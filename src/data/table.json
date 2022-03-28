@@ -1,0 +1,73 @@
+{
+    "saisi" : [
+        {
+            "id": 1,
+            "montant": 1000.23,
+            "description": "payé par chèque",
+            "intitule": {
+                            "id" : 3,
+                            "intitule": "douane"
+                        },
+            "version_id": {
+                            "id" : 22,
+                            "annee": 2018,
+                            "periode" : 5,
+                            "typeOGT" : "type01",
+                            "version" : "2.2.3"
+                          },
+            "username" : {
+                            "id" : 113,
+                            "username" : "Axel",
+                            "email" : "axel18@outlook.fr",
+                            "im" : 225333
+                         }
+
+        },
+        {
+            "id": 2,
+            "montant": 2500,
+            "description": "payé en espèce",
+            "intitule": {
+                            "id" : 4,
+                            "intitule": "impot"
+                        },
+            "version_id": {
+                            "id" : 12,
+                            "annee": 2019,
+                            "periode" : 1,
+                            "typeOGT" : "type03",
+                            "version" : "1.1.5"
+                          },
+            "username" : {
+                            "id" : 99,
+                            "username" : "Christine",
+                            "email" : "ChristineM@outlook.fr",
+                            "im" : 225304
+                         }
+
+        },
+        {
+            "id": 3,
+            "montant": 30000.554,
+            "description": "payé par virement",
+            "intitule": {
+                            "id" : 3,
+                            "intitule": "douane"
+                        },
+            "version_id": {
+                            "id" : 24,
+                            "annee": 2021,
+                            "periode" : 8,
+                            "typeOGT" : "type02",
+                            "version" : "3.0.1"
+                          },
+            "username" : {
+                            "id" : 224,
+                            "username" : "Rasoa",
+                            "email" : "rsa@gmail.com",
+                            "im" : 301244
+                         }
+
+        }
+    ]
+}

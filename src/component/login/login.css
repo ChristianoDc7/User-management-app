@@ -7,7 +7,7 @@
     color: bisque;
 }
 
-.centered{
+.centeredy{
     display: flex;
     justify-content: center;
     flex-direction: column;

@@ -41,7 +41,7 @@ const Login : FunctionComponent = () =>
      }
 
   return (
-    <div className='center-align centered'>
+    <div className='center-align centeredy'>
          {
               errmsg != '' ? (
           <Row >
