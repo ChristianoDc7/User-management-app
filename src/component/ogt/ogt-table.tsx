@@ -31,29 +31,15 @@ const OgtTable : FunctionComponent = () => {
         setHead(ogtData.map(element => element.year))
     },[ogtData])
 
-    const handleSelect = (e : React.ChangeEvent<HTMLSelectElement> ) =>
+    const handleSelect = (e: any   ) =>
     {
-        let selectedYear = Array.from(e.target.selectedOptions, option => option.value).map(Number)
-        setChecked(selectedYear)
+        //let selectedYear = Array.from(e.target.selectedOptions, option => option.value).map(Number)
+        setChecked(e.value.split(", ").map(Number))
+        
     }
 
     let [checked , setChecked] = useState<Array<number>>([2022,2023,2024])
 
-    const handleCheck = (element : number, e : React.ChangeEvent<HTMLInputElement>) =>
-    {
-        let checktest = e.target.checked 
-        let checkedId = Number(e.target.id) 
-        let newField : number[]
-        if(checktest){
-            const newElement : number[] = checked.concat([element]);
-            newField = newElement;
-        } else {
-            const newElement: number[] = checked.filter(el => el != checkedId)
-            newField = newElement;
-        }
-        setChecked(newField.sort((a,b) => a-b))
-        
-    }
 
     const hasSelected = (sel : number): boolean =>{
         return checked.includes(sel)
@@ -68,8 +54,13 @@ const OgtTable : FunctionComponent = () => {
         <h2>Ogt Table</h2>
         <Row>
             <Col >
-                    <Select multiple onChange={(e)=>handleSelect(e)} >
-                            <option value="" disabled >Choose the columns</option>
+                    <Select multiple  options={{
+                        dropdownOptions : {
+                            closeOnClick : false,
+                            onCloseEnd : handleSelect,
+                        }
+                    }}>
+                            <option value="e" disabled >Choose the columns</option>
                             {
                                 head.map((el,i)=>(
                                     <option key={i} value={el} selected={hasSelected(el)} >{el}</option>

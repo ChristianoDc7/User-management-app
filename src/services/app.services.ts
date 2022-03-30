@@ -56,6 +56,12 @@ export default class AppServices
         return response;
     }
 
+    static async getSaisi() : Promise<AxiosResponse<OgtInterface[], any>>
+    {
+        let response = await axiosConfig.get<any[]>('http://localhost:7000/saisi/')
+        return response;
+    }
+
     static  DESC(a : any , b : any)
     {
         return ((a.id == b.id) ? 0 : ((a.id < b.id) ? 1 : -1));

@@ -9,6 +9,7 @@ import OgtTable from './component/ogt/ogt-table';
 import Navs from './component/navbar/navbar';
 import Login from './component/login/login';
 import { NotFound } from './component/not found/NotFound';
+import { VerticalOgt } from './component/ogt/vertical-ogt';
 import { AuthContext } from './services/Auth/Auth-Provider';
 import AuthProvider from './services/Auth/Auth-Provider';
 import ProtectedRoute from './services/Auth/protectedRoute';
@@ -30,6 +31,7 @@ function App() {
                       <Route path='ogt' element={<OgtTable/>} />
                       <Route path='users' element={<Users />} />
                   </Route>
+                  <Route path='table' element={<VerticalOgt />} />
                   <Route path='about' element={<About />} />
                   <Route path='*' element={<NotFound />} />
                   <Route path='login' element={<Login />}></Route>
