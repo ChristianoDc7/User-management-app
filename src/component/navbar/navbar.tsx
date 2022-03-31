@@ -9,7 +9,7 @@ export default function Navs() {
  
   return (
       <Row className=''>
-          <Navbar className="navbar-container grey darken-2 align-center" alignLinks={'right'} brand={<Link to="table" className='brand-logo'><span className='material-icons resize'>badge</span></Link>} menuIcon={undefined} >  
+          <Navbar className="navbar-container grey darken-2 align-center" alignLinks={'right'} brand={<Link to="dashboard" className='brand-logo'><span className='material-icons resize'>badge</span></Link>} menuIcon={undefined} >  
               <NavLink to="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></NavLink>
               <NavLink to="/"><i className="material-icons-round tiny" >home</i>Home</NavLink>
               <NavLink to="count"><i className='material-icons-outlined tiny'>add_circle</i>Count</NavLink>

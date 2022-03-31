@@ -1,0 +1,22 @@
+.mt-10{
+    margin-top: 30px;
+}
+
+.tabs .tab a{
+    background-color:white !important;
+    color: rgb(12, 211, 125) !important;
+} /*Black color to the text*/
+
+.tabs .tab a:hover {
+    background-color:rgb(12, 211, 125) !important;
+    color:white !important;
+} /*Text color on hover*/
+
+.tabs .tab a.active {
+    background-color:rgb(255, 255, 255) !important;
+    color:rgb(28, 170, 109) !important
+}
+
+.tabs .indicator {
+    background-color:rgb(12, 211, 125) !important;
+}

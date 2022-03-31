@@ -3,7 +3,7 @@ import { Checkbox, Col, Row, Select, Table } from 'react-materialize'
 import AppServices from '../../services/app.services'
 import OgtBody from './ogt-body'
 
-export const VerticalOgt = () => {
+export const ViewOgt = () => {
   
     const [Saisi , setSaisi] = useState<any[]>([])
 
@@ -15,10 +15,12 @@ export const VerticalOgt = () => {
 
     const [years , setYears] = useState<Array<number>>([])
 
+    const [filteredY, setFilteredY] = useState<number[]>([])
+
     const handleYearChange = (e: any) => {
-        console.log(e.value.split(', '))
+        setFilteredY(e.value.split(', ').map(Number))
     }
-    
+
     useEffect(()=>{
         fetchSaisi()
     },[])
@@ -43,7 +45,7 @@ export const VerticalOgt = () => {
                         }
                     }}
                 >
-                    <option value="all" >All</option>
+                    <option value="all" disabled>All</option>
                     {
                         years.map((year,i)=>(
                             <option key={i} value={year.toString()}>{year}</option>
@@ -74,7 +76,7 @@ export const VerticalOgt = () => {
                 </tr>
             </thead>
             <tbody>
-                <OgtBody Saisis={Saisi} years={years}/>
+                <OgtBody Saisis={Saisi} years={filteredY}/>
             </tbody>
             
         </Table>
