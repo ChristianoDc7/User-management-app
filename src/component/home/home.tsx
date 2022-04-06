@@ -3,7 +3,7 @@ import Language from "./language";
 import techs from "../../data/data";
 import CardL from "./card/card";
 import { useNavigate } from "react-router-dom";
-
+import '../../styles/style.scss';
 
 const Home : FunctionComponent= () =>
 {
@@ -17,7 +17,8 @@ const Home : FunctionComponent= () =>
     },[])
 
     return (
-        <div >
+        <>
+            <h1>Pg Languages</h1>
             <div className="row">
                 {
                     techno.map((element) => (
@@ -25,7 +26,7 @@ const Home : FunctionComponent= () =>
                     ))
                 }
             </div>
-        </div>
+        </>
     )
 }
 
