@@ -1,0 +1,19 @@
+$darken : black;
+
+
+.homepage{
+    h1{
+        color: white;
+        background-color: $darken;
+        
+        &:hover{
+            color: rgb(255, 255, 255);
+            background-color: chocolate;
+        }
+    }
+}
+
+
+.labeled {
+    color: cornflowerblue
+}

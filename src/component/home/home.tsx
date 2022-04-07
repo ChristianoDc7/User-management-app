@@ -3,7 +3,8 @@ import Language from "./language";
 import techs from "../../data/data";
 import CardL from "./card/card";
 import { useNavigate } from "react-router-dom";
-import '../../styles/style.scss';
+import styles from '../../styles/style.module.scss';
+
 
 const Home : FunctionComponent= () =>
 {
@@ -17,8 +18,10 @@ const Home : FunctionComponent= () =>
     },[])
 
     return (
-        <>
+        <div className={styles.homepage}>
             <h1>Pg Languages</h1>
+            <p style={{color:'blue'}} >Class sx</p>
+        
             <div className="row">
                 {
                     techno.map((element) => (
@@ -26,7 +29,8 @@ const Home : FunctionComponent= () =>
                     ))
                 }
             </div>
-        </>
+            DataGrid
+        </div>
     )
 }
 
