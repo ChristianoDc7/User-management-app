@@ -20,7 +20,6 @@ const Home : FunctionComponent= () =>
     return (
         <div className={styles.homepage}>
             <h1>Pg Languages</h1>
-            <p style={{color:'blue'}} >Class sx</p>
         
             <div className="row">
                 {
@@ -29,7 +28,6 @@ const Home : FunctionComponent= () =>
                     ))
                 }
             </div>
-            DataGrid
         </div>
     )
 }

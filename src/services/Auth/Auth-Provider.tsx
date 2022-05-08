@@ -15,6 +15,9 @@ export const AuthContext = createContext<AuthContextType>({
 });
 
 const AuthProvider : FunctionComponent = ({ children }) => {
+
+    const authkey = 'auth';
+
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
     
     const [user , setUser ] = useState<userType>({
@@ -31,13 +34,26 @@ const AuthProvider : FunctionComponent = ({ children }) => {
           userName : '', 
           password : ''
         }) 
+        localStorage.removeItem(authkey)
         navigate('/')
       }
 
+    
+
     useEffect(()=>{
-        if(userName == 'tino' && password == 'tino'){
+      
+      const auth = localStorage.getItem(authkey)
+        if(auth){
+          setIsAuthenticated(JSON.parse(auth))
+          console.log(auth)
+        }
+         else if(!auth && userName == 'tino' && password == 'tino')
+        {
           setIsAuthenticated(true)
-        }else {
+          localStorage.setItem(authkey, JSON.stringify(true))
+        } 
+          else 
+        {
           setIsAuthenticated(false)
         }
       },[user])

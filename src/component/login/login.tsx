@@ -3,11 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { Card, Col, Icon, Row} from 'react-materialize'
 import './login.css'
 import { AuthContext } from '../../services/Auth/Auth-Provider';
+import { stringify } from 'querystring';
 
 
 const Login : FunctionComponent = () =>
 {
-     const {user, setUser} = useContext(AuthContext)
+     const {user, setUser , isAuthenticated} = useContext(AuthContext)
      const [inputForms , setInputForm] = useState<any>({
           userName : '',
           password : ''
