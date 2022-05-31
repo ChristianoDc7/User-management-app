@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import { Row, Select, Table ,Col } from 'react-materialize'
 import AppServices from '../../services/app.services'
 import { OgtInterface } from './ogtInterface'
@@ -9,11 +9,7 @@ const OgtTable : FunctionComponent = () => {
 
     const [ogtData , setOgtData] = useState<OgtInterface[]>([])
 
-    const sendto = async ()=>
-    {
-        let headers = ogtData.map((element: { year: any }) => element.year)
-        setHead(headers)
-    }
+    
 
     const fetchOgt = async () => 
     {
@@ -62,7 +58,7 @@ const OgtTable : FunctionComponent = () => {
                     }}>
                             <option value="e" disabled >Choose the columns</option>
                             {
-                                head.map((el,i)=>(
+                                head?.map((el,i)=>(
                                     <option key={i} value={el} selected={hasSelected(el)} >{el}</option>
                                 ))
                             }
@@ -76,7 +72,7 @@ const OgtTable : FunctionComponent = () => {
                 <tr>
                     <th></th>
                     {
-                        checked.map((element,index)=>(
+                        checked?.map((element,index)=>(
                             <TableHeader key={index} checked = {element} />
                         ))
                     }
@@ -84,7 +80,7 @@ const OgtTable : FunctionComponent = () => {
             </thead>
             <tbody>
                 {
-                    rows.map((element,index)=>(
+                    rows?.map((element,index)=>(
                         <TableRow key={index} row = {element} checked= {checked} ogtData={ogtData}/>
                     ))
                 }

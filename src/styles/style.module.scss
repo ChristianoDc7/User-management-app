@@ -5,6 +5,10 @@ $darken : black;
     h1{
         color: black;
         //background-color: $darken;
+        text-shadow: 0px -1px 3px yellow,
+        0px -4px 5px orange,
+        0px -7px 7px red,
+        0px -11px 12px darkred; 
         
         &:hover{
             color: rgb(0, 96, 96);
@@ -16,4 +20,61 @@ $darken : black;
 
 .labeled {
     color: cornflowerblue
+}
+
+@mixin chat{
+    padding: 10px;
+    border-radius: 20px;
+    color: white;
+    margin-block: 7px;
+    width: calc( 10% + 150px );
+    position: sticky;
+    
+}
+
+.message {
+    width: 35%;
+    justify-content: center;
+    :global .lft
+    {
+        @include chat;
+        background-color:  rgb(75, 75, 75);
+        text-align: left;
+        padding-left: 15px;
+        
+    }
+    
+    :global .rht
+    {
+        @include chat;
+        background-color:rgb(11, 113, 176);
+        text-align: right;
+        padding-right: 15px;
+        left: 15%;
+        
+    }
+    :global .withPhoto
+    {
+        display: flex;
+        right: 15%;
+        align-items: center;
+    }
+    :global .avatar
+    {
+       border-radius: 60%;
+       max-width: 40px;
+       max-height: 40px;
+       margin-right: 3px;
+    }
+
+    :global .ngez 
+    {
+        display: flex;
+        align-items: center;
+
+    }
+    :global .fields 
+    {
+        width: 40vh !important;
+    }
 }

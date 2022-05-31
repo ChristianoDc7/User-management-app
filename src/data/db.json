@@ -27,6 +27,13 @@
       "phone": "032103313",
       "fonction": "Customer-care",
       "id": 5
+    },
+    {
+      "name": "Randria",
+      "email": "heri@gmail.fr",
+      "phone": "+261334566122",
+      "fonction": "QA-testers",
+      "id": 6
     }
   ]
 }

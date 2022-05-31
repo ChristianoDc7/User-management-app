@@ -36,7 +36,7 @@ const Users : FunctionComponent = () =>
                 </thead>
                 <tbody>
                     {
-                        Users.map((user)=>(
+                        Users?.map((user)=>(
                             <User key={user.id} Users={user} fetchUsers = {fetchUsers} isEdit={false} />
                         ))
                     }

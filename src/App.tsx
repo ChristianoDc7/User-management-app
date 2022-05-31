@@ -1,6 +1,6 @@
-import React, { FunctionComponent, useContext, useEffect, useState } from 'react';
+import React, {useContext} from 'react';
 import './App.css';
-import { Routes , Route, useNavigate} from 'react-router-dom';
+import { Routes , Route} from 'react-router-dom';
 import Home from './component/home/home';
 import About from './component/about/about';
 import Count from './component/count/count';
@@ -9,17 +9,16 @@ import OgtTable from './component/ogt/ogt-table';
 import Navs from './component/navbar/navbar';
 import Login from './component/login/login';
 import { NotFound } from './component/not found/NotFound';
-import { ViewOgt } from './component/ogt/view-ogt';
 import { AuthContext } from './services/Auth/Auth-Provider';
-import AuthProvider from './services/Auth/Auth-Provider';
 import ProtectedRoute from './services/Auth/protectedRoute';
 import OgtDashboard from './component/ogt/OgtDashboard';
+import Message from './component/message/message';
 
 
 
 
 function App() {
-  const {isAuthenticated, setIsAuthenticated , user , setUser , Logout} = useContext(AuthContext)
+  const {isAuthenticated} = useContext(AuthContext)
   return (
         <div className="App">
             <Navs/>
@@ -31,6 +30,7 @@ function App() {
                       <Route path='count' element={<Count/>} />
                       <Route path='ogt' element={<OgtTable/>} />
                       <Route path='users' element={<Users />} />
+                      <Route path='message' element={<Message />} />
                   </Route>
                   <Route path='dashboard' element={<OgtDashboard />} />
                   <Route path='about' element={<About />} />
